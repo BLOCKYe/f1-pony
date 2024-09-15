@@ -1,0 +1,7 @@
+const QueryKeys = {
+  DRIVERS_STANDINGS: 'DRIVERS_STANDINGS',
+  CONSTRUCTORS_STANDINGS: 'CONSTRUCTORS_STANDINGS',
+  RACES: 'RACES',
+};
+
+export default QueryKeys;
