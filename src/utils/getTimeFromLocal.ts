@@ -8,7 +8,7 @@ function getTimeFromLocal(dateTime: string): string {
   const userTime = inputMoment.clone().tz(moment.tz.guess());
 
   // Return formatted time string
-  return userTime.format('YYYY-MM-DD, HH:mm:ss');
+  return userTime.format('YYYY-MM-DD, HH:mm');
 }
 
 export default getTimeFromLocal;

@@ -2,7 +2,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import Flex from '@/components/wrappers/Flex';
-import HeaderCard from '@/modules/header/components/HeaderCard';
+import HeaderCard from '@/modules/home/components/HeaderCard';
 import { useGlobalContext } from '@/providers/GlobalContext';
 import { useMemo } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';

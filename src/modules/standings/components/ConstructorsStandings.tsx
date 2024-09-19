@@ -11,7 +11,7 @@ const ConstructorsStandings = () => {
    * Renders list
    */
   const renderList = useMemo(() => {
-    if (isLoading) return Array.from({ length: 22 }).map((_, idx) => <Skeleton key={idx} className={'h-[22px]'} />);
+    if (isLoading) return Array.from({ length: 10 }).map((_, idx) => <Skeleton key={idx} className={'h-[22px]'} />);
 
     if (!data) return <p>No data.</p>;
 

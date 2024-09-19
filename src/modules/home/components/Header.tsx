@@ -1,5 +1,5 @@
-import HeaderRaceCard from '@/modules/header/components/HeaderRaceCard';
-import HeaderSeasonCard from '@/modules/header/components/HeaderSeasonCard';
+import HeaderRaceCard from '@/modules/home/components/HeaderRaceCard';
+import HeaderSeasonCard from '@/modules/home/components/HeaderSeasonCard';
 import { useGetRaces } from '@/modules/races/api/queries';
 import getTimeFromLocal from '@/utils/getTimeFromLocal';
 import moment from 'moment';

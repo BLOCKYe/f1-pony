@@ -1,7 +1,6 @@
-import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
-import Flex from '@/components/wrappers/Flex';
 import { useGetDriversStandings } from '@/modules/standings/api/queries';
+import DriverItem from '@/modules/standings/components/DriverItem';
 import { useMemo } from 'react';
 
 const DriversStandings = () => {
@@ -15,20 +14,7 @@ const DriversStandings = () => {
 
     if (!data) return <p>No data.</p>;
 
-    return data?.map((item) => (
-      <div className={'flex items-center gap-3 justify-between'} key={item?.id}>
-        <Flex>
-          <Badge variant={'outline'}>{item.position}</Badge>
-          <p>
-            {item?.name}
-            <Badge className={'ml-3'} variant={'secondary'}>
-              {item?.team}
-            </Badge>
-          </p>
-        </Flex>
-        <p>{item?.points}</p>
-      </div>
-    ));
+    return data?.map((item) => <DriverItem key={item?.id} {...item} />);
   }, [data, isLoading]);
 
   return (

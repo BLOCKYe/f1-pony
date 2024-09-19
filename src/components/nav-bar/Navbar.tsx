@@ -36,7 +36,7 @@ const Navbar = () => {
 
   return (
     <div className={'fixed top-0 left-0 bg-background/70 backdrop-blur-sm w-full z-40'}>
-      <div className={'px-3 md:px-5 py-3 md:py-5 max-w-5xl mx-auto'}>
+      <div className={'px-5 py-3 md:py-5 max-w-5xl mx-auto'}>
         <div className={'justify-between overflow-auto flex gap-10 items-center pb-1'}>
           <img src={'/vite.svg'} alt={'logo'} className={'max-w-10 h-full'} />
 

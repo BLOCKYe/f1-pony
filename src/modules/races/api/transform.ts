@@ -35,11 +35,11 @@ export type RaceDomain = ReturnType<typeof RacesPresenter>[number];
  * @returns
  */
 export const RacePresenter = (response: RacesResponse) => {
-  if (!response?.MRData?.RaceTable?.Races?.[0]) {
+  if (!response?.MRData?.RaceTable?.Races?.[0]?.Results) {
     return [];
   }
 
-  return response?.MRData?.RaceTable?.Races?.[0].Results?.map((item) => ({
+  return response?.MRData?.RaceTable?.Races?.[0].Results.map((item) => ({
     id: item?.Driver?.driverId,
     name: `${item?.Driver?.givenName} ${item?.Driver?.familyName}`,
     position: item?.position,
@@ -54,3 +54,5 @@ export const RacePresenter = (response: RacesResponse) => {
     team: item?.Constructor?.name,
   }));
 };
+
+export type RaceDetailsDomain = ReturnType<typeof RacePresenter>[number];
