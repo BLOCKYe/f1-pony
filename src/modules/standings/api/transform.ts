@@ -63,6 +63,7 @@ export const DriverResultsPresenter = (response: RacesResponse) => {
       round: race?.round ?? '',
       date: race?.date ?? '',
       time: race?.time ?? '',
+      raceTime: raceResult?.Time?.time ?? '',
       country: race?.Circuit?.Location?.country ?? '',
       locality: race?.Circuit?.Location?.locality ?? '',
       grid: raceResult?.grid ?? '',

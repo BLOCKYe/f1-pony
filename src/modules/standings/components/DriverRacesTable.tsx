@@ -59,7 +59,7 @@ const DriverRacesTable: React.FC<DriverRacesTableProps> = (props) => {
 
           {/* <--- time ---> */}
           <Cell className={'w-20'}>
-            <p>{item?.time ?? 'No time'}</p>
+            <p>{item?.raceTime ?? 'No time'}</p>
           </Cell>
 
           {/* <--- status ---> */}
