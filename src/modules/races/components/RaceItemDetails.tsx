@@ -8,6 +8,7 @@ import { RaceDetailsDomain, RaceDomain } from '@/modules/races/api/transform';
 import isAfter from '@/modules/races/utils/isAfter';
 import isFastestLap from '@/modules/races/utils/isFastestLap';
 import isProgress from '@/modules/races/utils/isProgress';
+import getTimeFromLocal from '@/utils/getTimeFromLocal';
 import openInNewTab from '@/utils/openInNewTab';
 import redirectToGoogleMaps from '@/utils/redirectToGoogleMap';
 import { DialogTitle, DialogDescription } from '@radix-ui/react-dialog';
@@ -95,7 +96,7 @@ const RaceItemDetails: React.FC<RaceItemDetailsProps> = (props) => {
           <p>Summary of selected race.</p>
 
           <Flex className={'mt-3 flex-wrap justify-center sm:justify-start'}>
-            <Badge variant={isAfter(date) ? 'secondary' : 'default'}>Round {round}</Badge>
+            <Badge variant={isAfter(getTimeFromLocal(`${date}T${race.time}`)) ? 'secondary' : 'default'}>Round {round}</Badge>
 
             <Badge variant={'default'} className={'cursor-pointer'} onClick={() => openInNewTab(url)}>
               {raceName}

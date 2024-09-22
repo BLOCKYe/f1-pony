@@ -30,7 +30,7 @@ const Header = () => {
         };
 
       const index = data.findIndex((item) => {
-        return moment().isBefore(moment(item.date));
+        return moment().isBefore(getTimeFromLocal(`${item.date}T${item.time}`));
       });
 
       if (index > -1) {
@@ -63,7 +63,7 @@ const Header = () => {
 
     const today = moment(new Date());
     data?.forEach((item) => {
-      if (today.isAfter(moment(item.date))) {
+      if (today.isAfter(getTimeFromLocal(`${item.date}T${item.time}`))) {
         racesDone++;
       }
       racesTotal++;

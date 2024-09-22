@@ -8,6 +8,7 @@ import { useGetRace } from '@/modules/races/api/queries';
 import Cell from '@/components/wrappers/Cell';
 import RaceItemDetails from '@/modules/races/components/RaceItemDetails';
 import isAfter from '@/modules/races/utils/isAfter';
+import getTimeFromLocal from '@/utils/getTimeFromLocal';
 
 const RaceItem: React.FC<RaceDomain> = (props) => {
   const { round, raceName, date, circuitName, time } = props;
@@ -23,7 +24,7 @@ const RaceItem: React.FC<RaceDomain> = (props) => {
           }>
           <Flex>
             <Cell className={'w-14'}>
-              <Badge variant={isAfter(`${date}T${time}`) ? 'secondary' : 'default'}>{round}</Badge>
+              <Badge variant={isAfter(getTimeFromLocal(`${date}T${time}`)) ? 'secondary' : 'default'}>{round}</Badge>
             </Cell>
             <p>{raceName}</p>
           </Flex>
