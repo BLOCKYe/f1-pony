@@ -11,13 +11,26 @@ export const DriverStandingsPresenter = (response: DriversStandingsResponse) => 
     return [];
   }
 
-  return response?.MRData?.StandingsTable?.StandingsLists[0]?.DriverStandings?.map((item) => ({
-    id: item?.Driver?.driverId,
-    name: `${item?.Driver?.givenName} ${item?.Driver?.familyName}`,
-    points: item?.points,
-    position: item?.positionText ?? '',
-    team: item.Constructors?.[0]?.name ?? '',
-  }));
+  const standings = response?.MRData?.StandingsTable?.StandingsLists[0]?.DriverStandings ?? [];
+  const leaderPoints = response?.MRData?.StandingsTable?.StandingsLists[0]?.DriverStandings?.[0]?.points ?? 0;
+
+  const parsedStandings = [];
+
+  for (let i = 0; i < standings.length; i++) {
+    const item = {
+      id: standings[i]?.Driver?.driverId,
+      name: `${standings[i]?.Driver?.givenName} ${standings[i]?.Driver?.familyName}`,
+      points: standings[i]?.points,
+      position: standings[i]?.positionText ?? '',
+      team: standings[i].Constructors?.[0]?.name ?? '',
+      differenceToLeader: parseInt(leaderPoints) - parseInt(standings[i]?.points ?? '0'),
+      differenceToPrevious: parseInt(standings[i - 1]?.points ?? '0') - parseInt(standings[i]?.points ?? '0'),
+    };
+
+    parsedStandings.push(item);
+  }
+
+  return parsedStandings;
 };
 
 export type DriverDomain = ReturnType<typeof DriverStandingsPresenter>[number];
@@ -32,12 +45,25 @@ export const ConstructorStandingsPresenter = (response: ConstructorsStandingsRes
     return [];
   }
 
-  return response?.MRData?.StandingsTable?.StandingsLists[0]?.ConstructorStandings?.map((item) => ({
-    id: item?.Constructor?.constructorId,
-    name: item?.Constructor?.name,
-    points: item?.points,
-    position: item?.positionText ?? '',
-  }));
+  const standings = response?.MRData?.StandingsTable?.StandingsLists[0]?.ConstructorStandings ?? [];
+  const leaderPoints = response?.MRData?.StandingsTable?.StandingsLists[0]?.ConstructorStandings?.[0]?.points ?? 0;
+
+  const parsedStandings = [];
+
+  for (let i = 0; i < standings.length; i++) {
+    const item = {
+      id: standings[i]?.Constructor?.constructorId,
+      name: standings[i]?.Constructor?.name,
+      points: standings[i]?.points,
+      position: standings[i]?.positionText ?? '',
+      differenceToLeader: parseInt(leaderPoints) - parseInt(standings[i]?.points ?? '0'),
+      differenceToPrevious: parseInt(standings[i - 1]?.points ?? '0') - parseInt(standings[i]?.points ?? '0'),
+    };
+
+    parsedStandings.push(item);
+  }
+
+  return parsedStandings;
 };
 
 export type ConstructorDomain = ReturnType<typeof ConstructorStandingsPresenter>[number];
